@@ -9,6 +9,7 @@ db.create_all()
 
 # Create Users
 USERS = [
+    ('Isaac Levien', 'isaaclevien@mac.com'),
     ('Dan Schlosser', 'dan@schlosser.io')
 ]
 from app.models import User, Recordings, Bio
