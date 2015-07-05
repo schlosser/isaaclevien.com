@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+
+{% import "macros.html" as macros %}
+{% import "includes/soundcloud_item.html" as soundcloud %}
+
+{% block content %}
+<nav class="admin-nav">
+	<ul>
+		<li class="icon">
+			<a class="no-underline" href="{{ url_for('main.index') }}">
+				<i class="fa fa-arrow-left back"></i>
+			</a>
+		</li>
+		<li>
+			<a href="{{ url_for('admin.recordings') }}">
+				Recordings
+			</a>
+		</li>
+		<li>
+			<a href="{{ url_for('admin.bio') }}">
+				Bio
+			</a>
+		</li>
+	</ul>
+</nav>
+<div class="admin-content-wrapper">
+	<div class="admin-content">
+		{% block admin_content %}{% endblock %}
+	</div>
+</div>
+{% endblock %}

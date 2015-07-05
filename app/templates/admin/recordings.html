@@ -1,0 +1,39 @@
+{% extends "admin/base.html" %}
+{% import "macros.html" as macros %}
+{% import "includes/soundcloud_item.html" as soundcloud %}
+
+{% block admin_content %}
+<h3>Edit Recordings</h3>
+<form id="add-soundcloud-embed" class="inline">
+	<div class="form-control" autocomplete="off">
+		<label>URL</label>
+		<input name="soundcloud-url"
+			   id="soundcloud-url"
+			   type="url"
+			   required
+			   autocomplete="off"
+			   placeholder="Paste a soundcloud URL here...">
+		<ul class="errors">
+
+		</ul>
+	</div><input type="submit" value="Add">
+</form>
+<form id="admin-form">
+	{{ form.csrf_token }}
+	{{ macros.status() }}
+	<ol class="soundcloud-urls">
+		{% for soundcloud_url in form.soundcloud_urls %}
+			{{ soundcloud.soundcloud_item(soundcloud_url.data) }}
+		{% endfor %}
+	</ol>
+	{{ macros.render_field(form.soundcloud_urls, label=False, hidden=True)}}
+</form>
+{% endblock %}
+
+{% block js %}
+{{ super() }}
+<script type="text/javascript"
+		src="{{ url_for('static', filename='js/vendor/html.sortable.min.js')}}"></script>
+<script type="text/javascript"
+		src="{{ url_for('static', filename='js/recordings.js')}}"></script>
+{% endblock %}

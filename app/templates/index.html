@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="scrim"></div>
+<div class="content">
+    <div class="inner">
+        {% block content %}
+        <h1><a class="no-underline" href="{{ url_for('main.index') }}">Isaac Levien</a></h1>
+        <div class="slide">
+            <h2>bassist, composer, and arranger</h2>
+            <ul class="links">
+                <li>
+                    <a href="{{ url_for('main.about') }}">
+                        About
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('main.view_recordings') }}">
+                        Recordings
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/isaac.levien">
+                        Facebook
+                    </a>
+                </li>
+                <li>
+                    <a href="https://soundcloud.com/isaac-levien">
+                        SoundCloud
+                    </a>
+                </li>
+                <li>
+                    <a href="http://instagram.com/isaaclevien">
+                        Instagram
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:isaac@isaaclevien.co">
+                        Email
+                    </a>
+                </li>
+            </ul>
+            {% block text %}
+            <div class="card">
+                <p>{{ short_bio | safe }}</p>
+            </div>
+            {% endblock %}
+        </div>
+        {% endblock %}
+    </div>
+</div>
+<ul class="more-info h5">
+    <li><i class="fa fa-info-circle"></i></li>
+    <li>Website by <a href="https://schlosser.io">Dan</a></li>
+    <li><a href="{{ url_for('admin.index') }}">Admin</a></li>
+</ul>
+{% endblock %}

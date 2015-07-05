@@ -1,0 +1,96 @@
+@import 'base';
+@import 'colors';
+
+form {
+    text-align: left;
+    max-width: 25rem;
+    margin: 0 auto;
+
+    &.inline {
+        .form-control, input {
+            display: inline-block;
+            vertical-align: top;
+        }
+        .form-control {
+            width: 75%;
+            &.invalid + input[type="submit"] {
+                border-bottom-width: 0;
+            }
+        }
+        input[type="submit"] {
+            width: 25%;
+            margin-top: 1.5rem;
+        }
+    }
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+textarea {
+    border: 1px solid white;
+    background-color: rgba(0,0,0,0.1);
+    outline: none;
+    color :white;
+    display: block;
+    padding: 0.5rem 1rem;
+    .p;
+    .border-box;
+    width: 100%;
+    .text-shadow;
+
+    .placeholder({
+        color: @light-gray;
+        font-style: italic;
+        .p;
+        .text-shadow;
+    });
+}
+
+textarea {
+    resize:vertical;
+}
+
+label {
+    .h6;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input[type="submit"] {
+    border-radius: 0;
+    background-color: @white;
+    color: @black;
+    outline: none;
+    width: 100%;
+    border:none;
+    padding: 0.5rem 1rem;
+    border: 1px solid @white;
+    text-align: center;
+    .p;
+
+    &:focus, &:active, &:hover {
+        background-color: @light-gray;
+    }
+}
+
+form .errors li {
+	background-color: @red;
+	display: block;
+    .h6;
+	color: @white;
+	padding: 0.5rem 1rem;
+}
+
+.form-control {
+	margin-bottom: 1rem;
+	&.invalid {
+		input {
+			border-color: @red;
+		}
+	}
+    &.hidden {
+        display: none;
+    }
+}

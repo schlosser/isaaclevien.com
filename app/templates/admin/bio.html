@@ -1,0 +1,21 @@
+{% extends "admin/base.html" %}
+{% import "macros.html" as macros %}
+{% import "includes/soundcloud_item.html" as soundcloud %}
+
+{% block admin_content %}
+<h3>Edit Bios</h3>
+<form id="bio-form">
+	{{ form.csrf_token }}
+	{{ macros.render_field(form.short_bio)}}
+	{{ macros.render_field(form.long_bio)}}
+	{{ macros.status() }}
+</form>
+{% endblock %}
+
+{% block js %}
+{{ super() }}
+<script type="text/javascript"
+		src="{{ url_for('static', filename='js/vendor/jquery.autogrowtextarea.min.js')}}"></script>
+<script type="text/javascript"
+		src="{{ url_for('static', filename='js/bio.js')}}"></script>
+{% endblock %}
