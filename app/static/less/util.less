@@ -32,6 +32,14 @@
 	text-shadow: 1px 1px rgba(0,0,0,0.5);
 }
 
+.clearfix {
+	&:after {
+		content: ' ';
+		display: block;
+		clear: both;
+	}
+}
+
 .transition(@speed) {
 	-webkit-transition: @speed ease all;
 	   -moz-transition: @speed ease all;

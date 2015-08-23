@@ -1,0 +1,33 @@
+{% extends "admin/base.html" %}
+{% import "macros.html" as macros %}
+
+{% block admin_content %}
+<h3>Edit Gigs</h3>
+<form id="gig-form">
+    {{ form.csrf_token }}
+    <h4>Gigs</h4>
+    <div class="card">
+        <ul class="gigs">
+            {% for gig in gigs %}
+                {{ macros.render_gig(gig) }}
+            {% endfor %}
+        </ul>
+    </div>
+
+    <h4>New Gig</h4>
+    {{ macros.render_field(form.new_gig.date, class="half") }}
+    {{ macros.render_field(form.new_gig.time, class="half") }}
+    {{ macros.render_field(form.new_gig.location) }}
+    {{ macros.render_field(form.new_gig.band) }}
+    {{ macros.render_field(form.new_gig.details) }}
+    {{ macros.status() }}
+</form>
+{% endblock %}
+
+{% block js %}
+{{ super() }}
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/vendor/jquery.autogrowtextarea.min.js')}}"></script>
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/gigs.js')}}"></script>
+{% endblock %}

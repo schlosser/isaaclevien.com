@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+{% block text %}
+<div class="card">
+    <ul class="gigs">
+    {% for gig in gigs %}
+        {{ macros.render_gig(gig) }}
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

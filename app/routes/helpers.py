@@ -1,5 +1,5 @@
 from flask import abort
-from app.models import Recordings, Bio
+from app.models import Recordings, Bio, Gig
 
 
 def _fetch_recordings():
@@ -14,3 +14,10 @@ def _fetch_bio():
     if not all_bios:
         abort(500)
     return all_bios[0]
+
+
+def _fetch_gigs():
+    all_bios = Gig.query.all()
+    if not all_bios:
+        abort(500)
+    return all_bios

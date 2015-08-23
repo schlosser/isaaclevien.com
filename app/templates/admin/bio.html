@@ -6,6 +6,7 @@
 <h3>Edit Bios</h3>
 <form id="bio-form">
 	{{ form.csrf_token }}
+    {{ macros.render_field(form.tagline)}}
 	{{ macros.render_field(form.short_bio)}}
 	{{ macros.render_field(form.long_bio)}}
 	{{ macros.status() }}

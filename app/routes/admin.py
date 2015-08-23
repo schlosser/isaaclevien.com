@@ -1,8 +1,9 @@
 from flask import Blueprint, render_template, abort, request, redirect, url_for
 from flask.ext.login import login_required
 from app import db
-from app.forms import RecordingsForm, BioForm
-from app.routes.helpers import _fetch_recordings, _fetch_bio
+from app.models import Gig
+from app.forms import RecordingsForm, BioForm, GigForm, GigsForm
+from app.routes.helpers import _fetch_recordings, _fetch_bio, _fetch_gigs
 import requests
 import re
 SOUNDCLOUD_REGEX = r'^https?://[^/]*soundcloud\.com/[^ ]*$'
@@ -42,7 +43,9 @@ def save_recordings():
 @login_required
 def bio():
     bio = _fetch_bio()
-    form = BioForm(short_bio=bio.short_bio, long_bio=bio.long_bio)
+    form = BioForm(tagline=bio.tagline,
+                   short_bio=bio.short_bio,
+                   long_bio=bio.long_bio)
     return render_template('admin/bio.html', form=form)
 
 
@@ -52,9 +55,34 @@ def save_bio():
     form = BioForm()
     if form.validate_on_submit():
         bio = _fetch_bio()
+        bio.tagline = form.tagline.data
         bio.short_bio = form.short_bio.data
         bio.long_bio = form.long_bio.data
         db.session.add(bio)
+        db.session.commit()
+        return "Saved!"
+    abort(400)
+
+
+@admin.route('/gigs', methods=['GET'])
+@login_required
+def gigs():
+    gigs = _fetch_gigs()
+    form = GigsForm()
+    return render_template('admin/gigs.html', gigs=gigs, form=form)
+
+
+@admin.route('/gigs', methods=['POST'])
+@login_required
+def save_gigs():
+    form = GigForm()
+    if form.validate_on_submit():
+        gig = Gig(date=form.date.data,
+                  time=form.time.data,
+                  location=form.location.data,
+                  band=form.band.data,
+                  details=form.details.data)
+        db.session.add(gig)
         db.session.commit()
         return "Saved!"
     abort(400)

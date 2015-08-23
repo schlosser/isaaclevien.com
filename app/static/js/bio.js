@@ -17,12 +17,15 @@ $(function() {
 		});
 	}
 
-	$textareas.on('keyup keypress', function() {
-		clearTimeout(timeoutId);
-		timeoutId = setTimeout(function() {
-			save();
-		}, 1000);
-	});
+    function autoSave() {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(function() {
+            save();
+        }, 1000);
+    }
+
+    $('#tagline').on('keyup keypress', autoSave);
+	$textareas.on('keyup keypress', autoSave);
 
 
 	$(document).keydown(function(event) {

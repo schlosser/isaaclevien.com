@@ -26,6 +26,21 @@
 </div>
 {% endmacro %}
 
+{% macro render_gig(gig, controls=False) %}
+{% set class = kwargs.get('class', '') + ' gig' %}
+<li class="{{class}}">
+	<div class="item">
+		{% if gig.band %}
+		<p class="title">{{gig.band}} at {{ gig.location}}</p>
+		{% else %}
+		<p class="title">{{gig.location}}</p>
+		{% endif %}
+		<p class="date">{{gig.date_string()}}</p>
+	</div>
+	<div class="details">{{gig.details_html | safe}}</div>
+</li>
+{% endmacro %}
+
 {% macro status() %}
 <div id="status">
 	<label class="status-saving">

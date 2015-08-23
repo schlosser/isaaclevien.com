@@ -1,4 +1,5 @@
 import getpass
+from datetime import datetime, timedelta
 from werkzeug.security import generate_password_hash
 
 # Create DB
@@ -12,7 +13,7 @@ USERS = [
     ('Isaac Levien', 'isaaclevien@mac.com'),
     ('Dan Schlosser', 'dan@schlosser.io')
 ]
-from app.models import User, Recordings, Bio
+from app.models import User, Recordings, Bio, Gig
 
 for name, email in USERS:
     print 'Creating user {} <{}>'.format(name, email)
@@ -28,15 +29,23 @@ recordings = Recordings(items=', '.join([
 ]))
 db.session.add(recordings)
 
+# Create Bios
 SHORT_BIO = ('Isaac Levien is a bassist, composer, and arranger'
              ' living in Boston.  He grew up in Lexington, MA, '
-             'and will graduate from New England Concervatory '
+             'and will graduate from New England Conservatory '
              'with a B.A. in Jazz Bass Performance in 2016.')
 LONG_BIO = SHORT_BIO + ' He is a great guy.'
+BANDS = 'Band One, Band Two.'
+TAGLINE = 'bassist, composer, teacher, and arranger'
 
-# Create Bios
-recordings = Bio(short_bio=SHORT_BIO, long_bio=LONG_BIO)
-db.session.add(recordings)
+bio = Bio(tagline=TAGLINE, short_bio=SHORT_BIO, long_bio=LONG_BIO, bands=BANDS)
+db.session.add(bio)
+
+# Create Gigs
+gig_date = datetime.now() + timedelta(days=1)
+gig = Gig(date=gig_date.date(), time=gig_date.time(), location="The Lillypad",
+          band="Saw Mill", details="It's going to be a *great* event.")
+db.session.add(gig)
 
 # Save everything
 db.session.commit()
