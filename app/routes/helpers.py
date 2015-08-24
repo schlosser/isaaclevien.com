@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import abort
 from app.models import Recordings, Bio, Gig
 
@@ -17,7 +18,8 @@ def _fetch_bio():
 
 
 def _fetch_gigs():
-    all_bios = Gig.query.all()
-    if not all_bios:
-        abort(500)
-    return all_bios
+    return Gig.query.filter(Gig.date >= datetime.now()).all()
+
+
+def _fetch_upcoming_gigs():
+    return Gig.query.filter(Gig.date >= datetime.now()).limit(3).all()

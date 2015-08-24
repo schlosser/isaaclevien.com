@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
-from app.routes.helpers import _fetch_recordings, _fetch_bio, _fetch_gigs
+from app.routes.helpers import (_fetch_recordings, _fetch_bio, _fetch_gigs,
+                                _fetch_upcoming_gigs)
 import markdown
 
 SOUNDCLOUD_REGEX = r'^https?://[^/]*soundcloud\.com/[^ ]*$'
@@ -10,7 +11,7 @@ main = Blueprint('main', __name__)
 @main.route('/', methods=['GET'])
 def index():
     bio = _fetch_bio()
-    gigs = _fetch_gigs()
+    gigs = _fetch_upcoming_gigs()
     short_bio_html = markdown.markdown(bio.short_bio)
     return render_template('index.html',
                            gigs=gigs,

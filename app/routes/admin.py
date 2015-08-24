@@ -1,8 +1,10 @@
-from flask import Blueprint, render_template, abort, request, redirect, url_for
+from flask import (Blueprint, render_template, abort, request, redirect,
+                   url_for, flash)
 from flask.ext.login import login_required
 from app import db
 from app.models import Gig
-from app.forms import RecordingsForm, BioForm, GigForm, GigsForm
+
+from app.forms import RecordingsForm, BioForm, GigForm
 from app.routes.helpers import _fetch_recordings, _fetch_bio, _fetch_gigs
 import requests
 import re
@@ -45,7 +47,8 @@ def bio():
     bio = _fetch_bio()
     form = BioForm(tagline=bio.tagline,
                    short_bio=bio.short_bio,
-                   long_bio=bio.long_bio)
+                   long_bio=bio.long_bio,
+                   bands=bio.bands)
     return render_template('admin/bio.html', form=form)
 
 
@@ -58,34 +61,57 @@ def save_bio():
         bio.tagline = form.tagline.data
         bio.short_bio = form.short_bio.data
         bio.long_bio = form.long_bio.data
+        bio.bands = form.bands.data
         db.session.add(bio)
         db.session.commit()
         return "Saved!"
     abort(400)
 
 
-@admin.route('/gigs', methods=['GET'])
+@admin.route('/gigs', methods=['GET', 'POST'])
 @login_required
 def gigs():
+    form = GigForm()
+    if form.validate_on_submit():
+        if form.gig_id.data:
+            # Update existing app
+            gig = Gig.query.get(form.gig_id.data)
+            if not gig:
+                flash("Failed to delete gig.")
+            else:
+                gig.date = form.date.data
+                gig.time = form.time.data
+                gig.location = form.location.data
+                gig.band = form.band.data
+                gig.details = form.details.data
+                db.session.commit()
+                flash("Updated!")
+                form.reset()
+                return redirect(url_for('admin.gigs'))
+        else:
+            # Create new
+            gig = Gig(date=form.date.data,
+                      time=form.time.data,
+                      location=form.location.data,
+                      band=form.band.data,
+                      details=form.details.data)
+            db.session.add(gig)
+            db.session.commit()
+            flash("Saved!")
+            form.reset()
+            return redirect(url_for('admin.gigs'))
     gigs = _fetch_gigs()
-    form = GigsForm()
     return render_template('admin/gigs.html', gigs=gigs, form=form)
 
 
-@admin.route('/gigs', methods=['POST'])
+@admin.route('/gigs/delete/<gig_id>', methods=['POST'])
 @login_required
-def save_gigs():
-    form = GigForm()
-    if form.validate_on_submit():
-        gig = Gig(date=form.date.data,
-                  time=form.time.data,
-                  location=form.location.data,
-                  band=form.band.data,
-                  details=form.details.data)
-        db.session.add(gig)
-        db.session.commit()
-        return "Saved!"
-    abort(400)
+def delete_gig(gig_id):
+    # form = DeleteGigForm()
+    # if form.validate_on_submit():
+    Gig.query.filter_by(id=gig_id).delete()
+    db.session.commit()
+    return "Deleted!"
 
 
 @admin.route('/list_item/soundcloud')

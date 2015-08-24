@@ -8,7 +8,8 @@
 	{{ form.csrf_token }}
     {{ macros.render_field(form.tagline)}}
 	{{ macros.render_field(form.short_bio)}}
-	{{ macros.render_field(form.long_bio)}}
+    {{ macros.render_field(form.long_bio)}}
+	{{ macros.render_field(form.bands) }}
 	{{ macros.status() }}
 </form>
 {% endblock %}

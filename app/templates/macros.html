@@ -13,7 +13,7 @@
 	{{ field.label }}
 	{% endif %}
 
-	{{ field(class=class, **kwargs) | safe }}
+	{{ field(**kwargs) | safe }}
 
 	{% if field.errors %}
 	<ul class="errors">
@@ -30,14 +30,29 @@
 {% set class = kwargs.get('class', '') + ' gig' %}
 <li class="{{class}}">
 	<div class="item">
-		{% if gig.band %}
-		<p class="title">{{gig.band}} at {{ gig.location}}</p>
-		{% else %}
-		<p class="title">{{gig.location}}</p>
-		{% endif %}
 		<p class="date">{{gig.date_string()}}</p>
+		<p class="title">
+			{% if gig.band %}{{gig.band}} at {% endif %}
+			{{ gig.location}}
+			{% if controls %}
+			<span class="actions">
+				<span><a href="#delete" data-id="{{gig.id}}"><i class="fa fa-trash"></i></a></span>
+				<span><a href="#edit"
+						 data-date="{{gig.date}}"
+						 data-time="{{gig.time}}"
+						 data-location="{{gig.location}}"
+						 data-band="{{gig.band}}"
+						 data-details="{{gig.details}}"
+						 data-id="{{gig.id}}">
+					<i class="fa fa-pencil"></i>
+				</a></span>
+			</span>
+			{% endif %}
+		</p>
 	</div>
-	<div class="details">{{gig.details_html | safe}}</div>
+	<div class="details">
+		{{gig.details_html | safe}}
+	</div>
 </li>
 {% endmacro %}
 

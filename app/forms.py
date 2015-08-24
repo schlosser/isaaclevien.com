@@ -1,8 +1,8 @@
 from werkzeug.security import check_password_hash
+from werkzeug import MultiDict
 from flask_wtf import Form
-from wtforms import (StringField, PasswordField, FieldList, TextAreaField,
-                     FormField)
-from wtforms_components import TimeField, DateField
+from wtforms import (StringField, PasswordField, FieldList, TextAreaField)
+from wtforms_components import TimeField, DateField, PassiveHiddenField
 from wtforms.validators import DataRequired, Email, ValidationError, URL
 from app.models import User
 from datetime import datetime
@@ -37,6 +37,12 @@ def valid_datetime(form, field):
         raise ValidationError('Gig date must be in the future.')
 
 
+class ResetableForm(Form):
+    def reset(self):
+        blank_data = MultiDict([])
+        self.process(blank_data)
+
+
 class LoginForm(Form):
     email = StringField('email',
                         validators=[DataRequired(), Email()])
@@ -53,16 +59,17 @@ class BioForm(Form):
     tagline = StringField()
     short_bio = TextAreaField()
     long_bio = TextAreaField()
+    bands = TextAreaField()
 
 
-class GigForm(Form):
+# class DeleteGigForm(Form):
+#     gig_id = PassiveHiddenField('Gig ID', validators=[DataRequired()])
+
+
+class GigForm(ResetableForm):
+    gig_id = PassiveHiddenField('Gig ID')
     date = DateField('Date', validators=[DataRequired(), valid_datetime])
     time = TimeField('Time', validators=[DataRequired()])
     location = StringField('Location', validators=[DataRequired()])
     band = StringField('Band', validators=[DataRequired()])
     details = TextAreaField('Details')
-
-
-class GigsForm(Form):
-    gigs = FieldList(FormField(GigForm))
-    new_gig = FormField(GigForm)
