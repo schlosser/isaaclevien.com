@@ -18,8 +18,15 @@ def _fetch_bio():
 
 
 def _fetch_gigs():
-    return Gig.query.filter(Gig.date >= datetime.now()).all()
+    return (Gig.query
+            .filter(Gig.date >= datetime.now().date())
+            .order_by(Gig.date)
+            .all())
 
 
 def _fetch_upcoming_gigs():
-    return Gig.query.filter(Gig.date >= datetime.now()).limit(3).all()
+    return (Gig.query
+            .filter(Gig.date >= datetime.now().date())
+            .order_by(Gig.date)
+            .limit(3)
+            .all())
