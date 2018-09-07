@@ -1,7 +1,53 @@
 @import 'lib/reset.min';
 @import 'media_queries';
 @import 'colors';
+@import 'animations';
 @import 'typography';
 @import 'base';
 @import 'layout';
 @import 'responsive';
+@import 'nav';
+
+.backgrounds {
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+  z-index: 0;
+
+  .background {
+    height: 100%;
+    width: 100%;
+
+    &.home {
+      background-image: url('/img/isaac-wall.jpg');
+      background-position: center right;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+}
+
+header {
+  animation: $a-fade-in-up;
+  background-color: rgba($white, 0.9);
+  border-radius: 4px;
+  box-shadow: 0 19px 38px rgba($black, 0.30), 0 15px 12px rgba($black, 0.22);
+  display: flex;
+  padding: 1rem 1.5rem;
+
+
+  h1 {
+    flex: 1;
+  }
+}
+
+.bio {
+  color: $white;
+  max-width: 35rem;
+  padding: 0 1.5rem;
+}

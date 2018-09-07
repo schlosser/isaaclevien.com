@@ -1,0 +1,12 @@
+nav, nav ul {
+    display: flex;
+    align-items: center;
+}
+
+nav li {
+    padding-right: 1.5rem;
+
+    &:last-child {
+        padding-right: 0;
+    }
+}
