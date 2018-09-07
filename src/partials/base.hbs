@@ -63,6 +63,24 @@
     </script>
 </head>
 <body>
-    {{#block "main"}}{{/block}}
+    {{#block "body"}}{{/block}}
+    <script src="/js/staple.js"></script>
+    <script src="/js/lib/ResizeSensor.js"></script>
+    <script>
+        var ledeImage = document.getElementById('lede-image');
+        var ledeImageSpacer = document.getElementById('lede-image-spacer');
+        var matchSizes = function(){
+            ledeImageSpacer.style.width = window.getComputedStyle(ledeImage).width;
+            ledeImageSpacer.style.height = window.getComputedStyle(ledeImage).height;
+        };
+
+        new window.ResizeSensor(ledeImage, matchSizes);
+        matchSizes();
+
+        var staple = new Staple({
+            stapleId: "lede-image-wrapper",
+            scrollingElementId: "lede",
+        }).enable();
+    </script>
 </body>
 </html>

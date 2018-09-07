@@ -1,27 +1,10 @@
-{{#extend "base"}}
-{{#content "main" mode="prepend"}}
-
-<div class="main">
-    <section>
-        <header>
-            <h1>Isaac Levien</h1>
-            <nav>
-                <ul>
-                    <li><a href="#">Projects</a></li>
-                    <li><a href="#">Performance</a></li>
-                    <li><a href="#">Pedagogy</a></li>
-                </ul>
-            </nav>
-        </header>    
-    </section>
-    <section>
-        <div class="bio">
-            <img src="/img/isaac-wall-vertical.jpg" alt="">
-            <h2>Composer, Bassist, Multidisciplinary Artist, Educator</h2>
-        </div>
-    </section>
-</div>
-
-
+{{#extend "page"}}
+{{#content "lede" mode="prepend"}}
+<h2>Composer, Bassist, Multidisciplinary Artist, Educator</h2>
 {{/content}}
+{{#content "imgUrl" mode="replace"}}/img/isaac-wall-vertical-alt.jpg{{/content}}
 {{/extend}}
+{{#content "main"}}
+<section></section>
+<section></section>
+{{/content}}

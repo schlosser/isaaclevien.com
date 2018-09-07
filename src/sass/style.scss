@@ -8,18 +8,53 @@
 @import 'responsive';
 @import 'nav';
 
+header {
+  width: 100%;
+  display: flex;
+  position: relative;
+
+  .lede-image-wrapper {
+    height: 100vh;
+    position: fixed;
+    z-index: 10;
+
+    img {
+      border: 1.5rem solid $white;
+      height: 100%;
+    }
+
+    h1 {
+      color: $white;
+      position: absolute;
+      left: 4rem;
+      top: 4rem;
+    }
+
+    &.stapled-bottom {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+  .lede-image-spacer {
+    flex-shrink: 0;
+    margin-right: 3rem;
+  }
+
+  .lede {
+    max-width: 35rem;
+    min-height: 100%;
+    padding: 15rem 3rem 0 1.5rem;
+
+    p {
+      margin-bottom: 1.1rem;
+    }
+  }
+}
+
 .main {
   position: relative;
   z-index: 1;
-}
-
-header {
-  display: flex;
-  padding: 1rem 1.5rem;
-
-  h1 {
-    flex: 1;
-  }
 }
 
 .bio {
@@ -42,4 +77,13 @@ header {
     z-index: 2;
     width: 25rem;
   }
+}
+
+.project {
+    display: flex;
+
+    h3 {
+        width: 20rem;
+        flex-shrink: 0;
+    }
 }
