@@ -1,7 +1,2 @@
-bin
-include
-lib
-.Python
-secrets.py
-.webassets-cache
-*.pyc
+node_modules
+dist/*
