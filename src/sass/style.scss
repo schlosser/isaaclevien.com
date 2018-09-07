@@ -8,38 +8,14 @@
 @import 'responsive';
 @import 'nav';
 
-.backgrounds {
-  height: 100vh;
-  position: fixed;
-  width: 100%;
-  z-index: 0;
-
-  .background {
-    height: 100%;
-    width: 100%;
-
-    &.home {
-      background-image: url('/img/isaac-wall.jpg');
-      background-position: center right;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-  }
-}
-
 .main {
   position: relative;
   z-index: 1;
 }
 
 header {
-  animation: $a-fade-in-up;
-  background-color: rgba($white, 0.9);
-  border-radius: 4px;
-  box-shadow: 0 19px 38px rgba($black, 0.30), 0 15px 12px rgba($black, 0.22);
   display: flex;
   padding: 1rem 1.5rem;
-
 
   h1 {
     flex: 1;
@@ -47,7 +23,23 @@ header {
 }
 
 .bio {
-  color: $white;
-  max-width: 35rem;
+  max-width: 55rem;
+  margin: 0 auto;
   padding: 0 1.5rem;
+  position: relative;
+
+  h2 {
+    position: relative;
+    z-index: 3;
+    padding-left: 17rem;
+    padding-top: 6rem;
+  }
+
+  img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    width: 25rem;
+  }
 }
