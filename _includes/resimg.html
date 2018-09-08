@@ -1,12 +1,18 @@
 {% if include.link %}
 <a href="{{ include.link }}" {% if include.target %}target="{{ include.target }}{% endif %}">
 {% endif %}
-<figure class="progressive-image {{ include.class }}"
+<figure class="progressive-image {{ include.class }} {% if include.strategy == "width" %} width-strategy {% endif %}"
+        {% if include.id %} id="{{include.id}}" {% endif %}
         data-small="/img/res/400/{{ include.src }}"
         data-medium="/img/res/800/{{ include.src }}"
         data-large="/img/res/1600/{{ include.src }}">
+    {% if include.strategy == "width" %}
+    <div class="aspect-ratio-holder"
+        style="width:calc({{- site.data.responsiveMetadata.aspectRatios[include.src] | times:100 | append:'vh'}});"></div>
+    {% else %}
     <div class="aspect-ratio-holder"
         style="padding-bottom: {{1.0 | divided_by: site.data.responsiveMetadata.aspectRatios[include.src] | times: 100 }}%"></div>
+    {% endif %}
     <img class="thumbnail"
         src="/img/res/20/{{ include.src }}"alt="">
 </figure>

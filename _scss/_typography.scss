@@ -1,35 +1,42 @@
 // Font weights
-$extra-bold: 800;
-$bold: 700;
-$medium: 500;
+$semi-bold: 600;
 $regular: 400;
-$light: 300;
+$extra-light: 200;
 
-$sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$monospace: monospace;
+$sans: 'Work Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 h1, %h1 {
-  font-size: 2.5rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  font-weight: $semi-bold;
+  // text-shadow: 0 0 10px rgba($black, 0.5);
 }
 
 h2, %h2 {
-  font-size: 2rem;
+  font-size: 3.5rem;
+  font-weight: $semi-bold;
+  line-height: 1.1;
+  margin-bottom: 2rem;
 }
 
 h3, %h3 {
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-weight: $semi-bold;
+  line-height: 1.1;
+  margin-bottom: 2rem;
 }
 
-h4, %h4 {
-  font-size: 1rem;
+h4, %h4, li {
+  font-size: 0.875rem;
+  font-weight: $semi-bold;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 1;
 }
 
 h5, %h5 {
-  font-size: 0.875rem;
-}
-
-h6, %h6 {
   font-size: 0.75rem;
+  text-transform: uppercase;
 }
 
 p, .p {
@@ -37,9 +44,6 @@ p, .p {
 }
 
 strong {
-  font-weight: $bold;
+  font-weight: $semi-bold;
 }
 
-code {
-  font-family: $monospace;
-}

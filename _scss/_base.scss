@@ -3,13 +3,13 @@ html, body {
   color: $black;
   font-family: $sans;
   font-size: 16px;
-  font-weight: $light;
+  font-weight: $regular;
   height: 100%;
   line-height: 1.5;
   position: relative;
 }
 
-*, *::before, *::after {
+*, *:after, *:before {
   box-sizing: border-box;
 }
 
@@ -23,7 +23,7 @@ img {
 }
 
 @mixin clearfix {
-  &::after {
+  &:after {
     clear: both;
     content: ' ';
     display: block;

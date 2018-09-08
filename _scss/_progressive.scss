@@ -25,7 +25,7 @@ body {
   transform-origin: 0 0;
   transition: 0.3s ease transform;
 
-  .aspect-ratio-holder {
+  &:not(.width-strategy) .aspect-ratio-holder {
     height: 0;
     width: 100%;
   }
@@ -34,13 +34,18 @@ body {
     cursor: zoom-in;
   }
 
+  &.width-strategy img {
+    width: 100%;
+    height: auto;
+  }
+
   img {
     height: 100%;
     left: 0;
     opacity: 0;
     position: absolute;
     top: 0;
-    transition: 0.3s ease opacity;
+    transition: 1s ease opacity;
     z-index: 2;
 
     &.thumbnail {

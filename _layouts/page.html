@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+{% include nav.html %}
+<header>
+    <div class="lede-image-wrapper" id="lede-image-wrapper">
+        {% include resimg.html id='lede-image' src=page.ledeImageUrl strategy='width' %}
+        <h1><a href="/">Isaac Levien</a></h1>
+    </div>
+    <div class="lede-image-spacer" id="lede-image-spacer"></div>
+    <div class="lede" id="lede">
+        <h2>{{page.ledeTitle}}</h2>
+        {% for paragraph in page.ledeContent %}
+        <p>{{paragraph}}</p>
+        {% endfor %}
+    </div>    
+</header>
+<div class="main">
+    {{ content }}
+</div>

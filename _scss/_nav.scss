@@ -1,0 +1,56 @@
+nav {
+  padding: 4rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  
+  .spacer {
+    flex: 1;
+  }
+}
+
+nav, nav ul {
+  display: flex;
+  align-items: center;
+}
+
+nav li {
+  margin-right: 1.5rem;
+  height: 1.2rem;
+  position: relative;
+  
+  &::after {
+    background-color: $black;
+  }
+
+  &.active::after {
+    transform: none;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+nav li, h1 {
+  &::after {
+    content: ' ';
+    height: 3px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    transform: scale(0, 1);
+    transition: 0.3s ease transform;
+  }
+
+  &:hover::after {
+    transform: none;
+  }
+}
+
+h1::after {
+  background-color: $white;
+  margin-top: 3px;
+}
