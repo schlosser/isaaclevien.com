@@ -7,8 +7,8 @@ $sans: 'Work Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 h1, %h1 {
   font-size: 1.25rem;
-  line-height: 1;
   font-weight: $semi-bold;
+  line-height: 1;
   // text-shadow: 0 0 10px rgba($black, 0.5);
 }
 
@@ -23,20 +23,21 @@ h3, %h3 {
   font-size: 2rem;
   font-weight: $semi-bold;
   line-height: 1.1;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 h4, %h4, li {
   font-size: 0.875rem;
   font-weight: $semi-bold;
   letter-spacing: 0.5px;
-  text-transform: uppercase;
   line-height: 1;
+  text-transform: uppercase;
 }
 
 h5, %h5 {
-  font-size: 0.75rem;
-  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-wieght: $extra-light;
+  opacity: 0.8;
 }
 
 p, .p {
@@ -45,5 +46,29 @@ p, .p {
 
 strong {
   font-weight: $semi-bold;
+}
+
+h2, h3, h4, h5, p {
+  a {
+    border-bottom: 1px solid $black;
+    transition: 0.2s linear opacity;
+
+    &:hover {
+        opacity: 0.5;
+    }
+  }
+}
+
+@media only screen and (max-width: $tablet-landscape-max) {
+  h2, %h2 {
+    font-size: 2.5rem;
+  }
+}
+
+
+@media only screen and (max-width: $phone-landscape-max) {
+  h2, %h2 {
+    font-size: 2rem;
+  }
 }
 

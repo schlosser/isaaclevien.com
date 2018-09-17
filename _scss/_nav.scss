@@ -1,25 +1,26 @@
 nav {
+  left: 0;
   padding: 4rem;
   position: absolute;
-  left: 0;
   right: 0;
   z-index: 5;
-  
+  justify-content: flex-end;
+
   .spacer {
     flex: 1;
   }
 }
 
 nav, nav ul {
-  display: flex;
   align-items: center;
+  display: flex;
 }
 
 nav li {
-  margin-right: 1.5rem;
   height: 1.2rem;
+  margin-right: 1.5rem;
   position: relative;
-  
+
   &::after {
     background-color: $black;
   }
@@ -31,6 +32,72 @@ nav li {
   &:last-child {
     margin-right: 0;
   }
+}
+
+.hamburger {
+  border: 3px solid $white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  flex-direction: column;
+  height: 3.5rem;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  position: relative;
+  transition: 0.3s ease all;
+  width: 3.5rem;
+  z-index: 120;
+
+  .bun, .patty {
+    background-color: $white;
+    height: 3px;
+    left: 50%;
+    margin-left: -0.9rem;
+    margin-top: -1.5px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transition: 0.3s ease all;
+    width: 1.8rem;
+  }
+
+  .patty {
+    transform: scale(0.9, 1);
+  }
+
+  .bun:first-child {
+    transform: scale(0.9, 1) translate3d(0, -0.5rem, 0);
+    transform-origin: center;
+  }
+
+  .bun:last-child {
+    transform: scale(0.9, 1) translate3d(0, 0.5rem, 0);
+    transform-origin: center;
+  }
+}
+
+nav.nav-open .hamburger {
+  border-color: $black;
+  transform: rotate(90deg);
+  z-index: 200;
+
+  .patty {
+    opacity: 0;
+  }
+
+  .bun:first-child {
+    background-color: $black;
+    transform: rotate(45deg);
+  }
+
+  .bun:last-child {
+    background-color: $black;
+    transform: rotate(315deg);
+  }
+}
+
+body.nav-open {
+  // Open styles
 }
 
 nav li, h1 {
@@ -53,4 +120,47 @@ nav li, h1 {
 h1::after {
   background-color: $white;
   margin-top: 3px;
+}
+
+@media only screen and (max-width: $phone-landscape-max) {
+  nav {
+    padding: 3rem 3rem 3rem 0;
+    z-index: 120;
+    margin-left: 75%;
+
+    .hamburger {
+      display: block;
+    }
+
+    ul {
+      align-items: center;
+      background-color: $white;
+      bottom: 0;
+      display: none;
+      flex-direction: column;
+      height: 100%;
+      justify-content: center;
+      left: 0;
+      margin: 0;
+      position: fixed;
+      transform: translate3d(0, -100%, 0);
+      transition: 0.3s ease transform;
+      width: 100%;
+
+      li {
+        display: inline-block;
+        font-size: 2rem;
+        font-weight: $semi-bold;
+        height: auto;
+        line-height: 1.5;
+        margin: 0 0 3rem;
+        text-transform: none;
+      }
+    }
+
+    &.nav-open ul {
+      display: flex;
+      transform: none;
+    }
+  }
 }

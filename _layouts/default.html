@@ -1,8 +1,10 @@
 ---
 layout: base
 ---
+<div class="scrim"></div>
 {{ content }}
 <script type="text/javascript" src="/js/lib/progressive-image.js"></script>
+<script src="/js/lib/nav.min.js"></script>
 <script src="/js/staple.js"></script>
 <script src="/js/lib/ResizeSensor.js"></script>
 <script>
@@ -11,7 +13,7 @@ layout: base
     for (var i = 0; i < figures.length; i++) {
         new ProgressiveImage(figures[i]);
     }
-    
+
     var ledeImage = document.getElementById('lede-image');
     var ledeImageSpacer = document.getElementById('lede-image-spacer');
     var matchSizes = function(){
@@ -21,6 +23,8 @@ layout: base
 
     new window.ResizeSensor(ledeImage, matchSizes);
     matchSizes();
+
+    var staple = new Nav().enable();
 
     document.addEventListener('DOMContentLoaded', function() {
         var staple = new Staple({

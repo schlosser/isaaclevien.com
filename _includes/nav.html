@@ -1,5 +1,10 @@
-<nav>
+<nav id="nav" class="nav">
     <div class="spacer"></div>
+    <div class="hamburger nav-toggle">
+        <div class="bun"></div>
+        <div class="patty"></div>
+        <div class="bun"></div>
+    </div>
     <ul>
         <li{% if page.activeTab == "projects" %} class="active"{% endif %}><a href="/projects/">Projects</a></li>
         <li{% if page.activeTab == "performance" %} class="active"{% endif %}><a href="/performance">Performance</a></li>

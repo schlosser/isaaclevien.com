@@ -1,23 +1,133 @@
 $content-width: 60rem;
 
 section {
-  padding: 3rem 1.5rem;
+  padding: 8rem 1.5rem;
 }
 
-.content {
+.section-area {
   @include clearfix;
   max-width: $content-width;
   width: 100%;
+  margin: 0 auto;
+  display: flex;
+
+  .section-header {
+    width: 20rem;
+    padding-right: 3rem;
+  }
+
+  .section-content {
+    flex: 1;
+  }
+}
+
+.section-content {
+  p {
+    margin-bottom: 1rem;
+  }
+
+  figure {
+    margin: 2rem 0;
+  }
+}
+
+header {
+  display: flex;
+  position: relative;
+  width: 100%;
+
+  .lede-image-wrapper {
+    height: 100vh;
+    position: fixed;
+    z-index: 10;
+
+    figure {
+      border: 1.5rem solid $white;
+      height: 100%;
+    }
+
+    h1 {
+      color: $white;
+      left: 4rem;
+      position: absolute;
+      top: 4rem;
+      z-index: 100;
+    }
+
+    &.stapled-bottom {
+      bottom: 0;
+      position: absolute;
+    }
+  }
+
+  .lede-image-spacer {
+    flex-shrink: 0;
+    margin-right: 3rem;
+  }
+
+  .lede {
+    max-width: 35rem;
+    min-height: 100%;
+    padding: 15rem 3rem 0 1.5rem;
+
+    p {
+      margin-bottom: 1.1rem;
+    }
+
+    h2, p {
+      animation: $a-fade-in-up;
+    }
+  }
+}
+
+@media screen and (max-width: $tablet-landscape-max) {
+  header .lede-image-wrapper figure {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: $tablet-portrait-max) {
+  header .lede-image-wrapper figure {
+    width: 50%;
+  }
 }
 
 @media screen and (max-width: $phone-landscape-max) {
-  .content {
-    padding: 0;
-    width: 100%;
-  }
+  header {
+    flex-direction: column;
 
-  section {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
+    .lede-image-wrapper {
+      max-height: 25rem;
+      position: relative;
+
+      &.stapled-bottom {
+        bottom: auto;
+        position: relative;
+      }
+
+      figure {
+        overflow: hidden;
+        width: 100%;
+
+        img {
+          top: auto;
+          bottom: 0;
+        }
+      }
+    }
+
+    .lede-image-spacer {
+      display: none;
+    }
+
+    .lede {
+      padding-top: 3rem;
+    }
+  }
+}
+
+@media screen and (max-width: $phone-portrait-max) {
+  header .lede-iamge-wrapper figure img {
+    margin-top: 0;
   }
 }
