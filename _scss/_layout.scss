@@ -26,8 +26,18 @@ section {
     margin-bottom: 1rem;
   }
 
-  figure {
+  figure, iframe, .video {
     margin: 2rem 0;
+  }
+
+  p, figure, iframe, .video {
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -80,6 +90,31 @@ header {
   }
 }
 
+.video {
+  height: 0;
+  padding-bottom: 56.25%;
+  position: relative;
+  width: 100%;
+
+  iframe {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    width: 100%;
+  }
+}
+
+.soundcloud-wrapper {
+  height: 166px;
+}
+
+.section-content > .video, .section-content > .soundcloud-wrapper {
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba($black, .5);
+  overflow: hidden;
+}
+
 @media screen and (max-width: $tablet-landscape-max) {
   header .lede-image-wrapper figure {
     width: 75%;
@@ -123,6 +158,20 @@ header {
     .lede {
       padding-top: 3rem;
     }
+  }
+
+  .section-area {
+    flex-direction: column;
+
+    .section-header {
+      padding-right: 0;
+      padding-bottom: 1rem;
+      width: 100%;
+    }
+  }
+
+  section {
+    padding: 3rem 1.5rem;
   }
 }
 

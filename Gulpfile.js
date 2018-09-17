@@ -240,9 +240,9 @@ gulp.task('clean', function(cb) {
 
 gulp.task('deploy', ['build:optimized'], function() {
   return gulp.src('')
-    .pipe(shell('rsync -avuzh _site/* dan:/srv/schlosser.io/public_html/'))
+    .pipe(shell('rsync -avuzh _site/* dan:/srv/isaac.schlosser.io/public_html/'))
     .on('finish', function() {
-      process.stdout.write('Deployed to schlosser.io\n');
+      process.stdout.write('Deployed to isaac.schlosser.io\n');
     });
 });
 
