@@ -87,6 +87,14 @@ header {
     h2, p {
       animation: $a-fade-in-up;
     }
+
+    .button-main {
+      animation: $a-fade-in-up-delay-1;
+    }
+
+    .button-secondary {
+      animation: $a-fade-in-up-delay-2;
+    }
   }
 }
 
@@ -110,7 +118,8 @@ header {
 }
 
 .instagram-wrapper > .instagram-media {
-  width: calc(100%);
+  width: 100%;
+  max-width: none !important;
   margin: 0 !important;
   border: 0 !important;
 }

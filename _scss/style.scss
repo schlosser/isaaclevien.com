@@ -8,34 +8,4 @@
 @import 'responsive';
 @import 'progressive';
 @import 'nav';
-
-.bio {
-  margin: 0 auto;
-  max-width: 55rem;
-  padding: 0 1.5rem;
-  position: relative;
-
-  h2 {
-    padding-left: 17rem;
-    padding-top: 6rem;
-    position: relative;
-    z-index: 3;
-  }
-
-  img {
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 25rem;
-    z-index: 2;
-  }
-}
-
-.project {
-  display: flex;
-
-  h3 {
-    flex-shrink: 0;
-    width: 20rem;
-  }
-}
+@import 'buttons';

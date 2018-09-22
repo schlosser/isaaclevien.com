@@ -11,10 +11,20 @@ layout: default
     <div class="lede-image-spacer" id="lede-image-spacer"></div>
     <div class="lede" id="lede">
         <h2>{{page.ledeTitle}}</h2>
+        {% if page.mainButton  or page.secondaryButton %}
+        <div class="buttons">
+            {% if page.mainButton %}
+            <a class="button black button-main" href="{{page.mainButton.link}}">{{ page.mainButton.label }}</a>
+            {% endif %}
+            {% if page.secondaryButton %}
+            <a class="button button-secondary" href="{{page.secondaryButton.link}}">{{ page.secondaryButton.label }}</a>
+            {% endif %}
+        </div>
+        {% endif %}
         {% for paragraph in page.ledeContent %}
         <p>{{paragraph}}</p>
         {% endfor %}
-    </div>    
+    </div>
 </header>
 <div class="main">
     {{ content }}
