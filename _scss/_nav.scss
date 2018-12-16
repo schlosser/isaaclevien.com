@@ -1,10 +1,10 @@
 nav {
+  justify-content: flex-end;
   left: 0;
   padding: 4rem;
   position: absolute;
   right: 0;
   z-index: 5;
-  justify-content: flex-end;
 
   .spacer {
     flex: 1;
@@ -124,9 +124,9 @@ h1::after {
 
 @media only screen and (max-width: $phone-landscape-max) {
   nav {
+    margin-left: 75%;
     padding: 3rem 3rem 3rem 0;
     z-index: 120;
-    margin-left: 75%;
 
     .hamburger {
       display: block;

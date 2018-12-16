@@ -1,11 +1,11 @@
 .button {
   @extend %h4;
-  padding: 0.75rem 1.5rem;
-  transition: 0.3s ease opacity;
-  display: inline-block;
-  text-transform: none;
-  margin-right: 1rem;
   border: 2px solid $black;
+  display: inline-block;
+  margin-right: 1rem;
+  padding: 0.75rem 1.5rem;
+  text-transform: none;
+  transition: 0.3s ease opacity;
 
   &:hover {
     opacity: 0.8;
@@ -21,17 +21,17 @@
     color: $white;
 
     &:hover {
-      opacity: 0.8;
       color: $white;
+      opacity: 0.8;
     }
   }
 
   &:after {
-    margin-left: 1rem;
-    margin-right: -0.5rem;
     content: '\2192';
     display: inline-block;
-    transition: 0.3s ease transform;
+    margin-left: 1rem;
+    margin-right: -0.5rem;
     transform: translate3d(-0.5rem, 0, 0);
+    transition: 0.3s ease transform;
   }
 }

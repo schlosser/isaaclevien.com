@@ -6,14 +6,14 @@ section {
 
 .section-area {
   @include clearfix;
+  display: flex;
+  margin: 0 auto;
   max-width: $content-width;
   width: 100%;
-  margin: 0 auto;
-  display: flex;
 
   .section-header {
-    width: 20rem;
     padding-right: 3rem;
+    width: 20rem;
   }
 
   .section-content {
@@ -117,23 +117,25 @@ header {
   height: 166px;
 }
 
+// scss-lint:disable ImportantRule
 .instagram-wrapper > .instagram-media {
-  width: 100%;
-  max-width: none !important;
-  margin: 0 !important;
   border: 0 !important;
+  margin: 0 !important;
+  max-width: none !important;
+  width: 100%;
 }
+// scss-lint:enable ImportantRule
 
 .section-content > .media {
   border-radius: 4px;
-  box-shadow: 0 0 10px rgba($black, .5);
+  box-shadow: 0 0 10px rgba($black, 0.5);
   overflow: hidden;
 }
 
 .image-grid {
+  align-items: flex-start;
   display: flex;
   margin-bottom: 2rem;
-  align-items: flex-start;
   width: 100%;
 
   figure {
@@ -180,8 +182,8 @@ header {
         width: 100%;
 
         img {
-          top: auto;
           bottom: 0;
+          top: auto;
         }
       }
     }
@@ -199,8 +201,8 @@ header {
     flex-direction: column;
 
     .section-header {
-      padding-right: 0;
       padding-bottom: 1rem;
+      padding-right: 0;
       width: 100%;
     }
   }

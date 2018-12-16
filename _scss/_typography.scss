@@ -36,7 +36,7 @@ h4, %h4, li {
 
 h5, %h5 {
   font-size: 0.9rem;
-  font-wieght: $extra-light;
+  font-weight: $extra-light;
   opacity: 0.8;
 }
 
@@ -54,7 +54,7 @@ h2, h3, h4, h5, p {
     transition: 0.2s linear opacity;
 
     &:hover {
-        opacity: 0.5;
+      opacity: 0.5;
     }
   }
 }
