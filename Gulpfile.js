@@ -39,15 +39,14 @@ var responsiveSizes = [20, 400, 800, 1600];
 /************
  **  SCSS  **
  ************/
-gulp.task('scss:lint', function(done) {
-  gulp.src(['./_scss/**/*.scss', '!./_scss/lib/**/*.scss'])
+gulp.task('scss:lint', function() {
+  return gulp.src(['./_scss/**/*.scss', '!./_scss/lib/**/*.scss'])
     .pipe(plumber())
     .pipe(scsslint());
-  done();
 });
 
-gulp.task('scss:build', function(done) {
-  gulp.src('./_scss/style.scss')
+gulp.task('scss:build', function() {
+  return gulp.src('./_scss/style.scss')
     .pipe(plumber())
     .pipe(rename({suffix: '.min'}))
     .pipe(sourcemaps.init())
@@ -61,13 +60,12 @@ gulp.task('scss:build', function(done) {
     .pipe(gulp.dest('./_site/css/'))
     .pipe(reload({stream: true}))
     .pipe(gulp.dest('./css/'));
-  done();
 });
 
 gulp.task('scss', gulp.series('scss:lint', 'scss:build'));
 
-gulp.task('scss:optimized', function(done) {
-  gulp.src('./_scss/style.scss')
+gulp.task('scss:optimized', function() {
+  return gulp.src('./_scss/style.scss')
     .pipe(plumber())
     .pipe(rename({suffix: '.min'}))
     .pipe(sass({
@@ -79,14 +77,13 @@ gulp.task('scss:optimized', function(done) {
     .pipe(gulp.dest('./_site/css/'))
     .pipe(reload({stream: true}))
     .pipe(gulp.dest('./css/'));
-  done();
 });
 
 /******************
  **  JavaScript  **
  ******************/
-gulp.task('js:build', function(done) {
-  gulp.src('./_js/**/*.js')
+gulp.task('js:build', function() {
+  return gulp.src('./_js/**/*.js')
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(uglify())
@@ -94,16 +91,14 @@ gulp.task('js:build', function(done) {
     .pipe(gulp.dest('./_site/js/'))
     .pipe(reload({stream: true}))
     .pipe(gulp.dest('./js/'));
-  done();
 });
 
-gulp.task('js:lint', function(done) {
-  gulp.src(['./_js/**/*.js', '!./_js/lib/**/*.js', 'Gulpfile.js'])
+gulp.task('js:lint', function() {
+  return gulp.src(['./_js/**/*.js', '!./_js/lib/**/*.js', 'Gulpfile.js'])
     .pipe(plumber())
       .pipe(eslint())
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
-  done();
 });
 
 gulp.task('js', gulp.series('js:lint', 'js:build'));
@@ -112,19 +107,18 @@ gulp.task('js', gulp.series('js:lint', 'js:build'));
  ** Optimized Images **
  **********************/
 
-gulp.task('images', function(done) {
+gulp.task('images', function() {
   var dest = './img/';
-  gulp.src('./_img/**/*')
+  return gulp.src('./_img/**/*')
     .pipe(plumber())
     .pipe(changed(dest))
     .pipe(gulp.dest('./_site/img/'))
     .pipe(reload({stream: true}))
     .pipe(gulp.dest(dest));
-  done();
 });
 
-gulp.task('images:optimized', function(done) {
-  gulp.src('./_img/**/*')
+gulp.task('images:optimized', function() {
+  return gulp.src('./_img/**/*')
     .pipe(plumber())
     .pipe(cache(imagemin({
       interlaced: true,
@@ -135,7 +129,6 @@ gulp.task('images:optimized', function(done) {
     .pipe(gulp.dest('./_site/img/'))
     .pipe(reload({stream: true}))
     .pipe(gulp.dest('./img/'));
-  done();
 });
 
 /***********************
@@ -199,9 +192,8 @@ gulp.task('responsive:metadata', function(done) {
     }))
     .on('finish', function() {
       fs.writeFileSync('./_data/responsiveMetadata.json', JSON.stringify(metadata, null, 2));
+      done();
     });
-
-  done();
 });
 
 gulp.task('responsive:clean', function(done) {
@@ -274,7 +266,7 @@ gulp.task('deploy:rsync', function(done) {
 gulp.task('deploy', gulp.series('build:optimized', 'deploy:rsync'));
 
 // use default task to launch Browsersync and watch JS files
-gulp.task('serve', gulp.series('build', gulp.parallel(function(done) {
+gulp.task('serve', gulp.series('build', function(done) {
 
   // Serve files from the root of this project
   browserSync.init(['./dist/**/*'], {
@@ -289,6 +281,6 @@ gulp.task('serve', gulp.series('build', gulp.parallel(function(done) {
   });
 
   done();
-}, 'watch')));
+}, 'watch'));
 
 gulp.task('default', gulp.series('serve'));
