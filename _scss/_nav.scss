@@ -4,10 +4,13 @@ nav {
   padding: 4rem;
   position: absolute;
   right: 0;
-  z-index: 30;
 
   .spacer {
     flex: 1;
+  }
+
+  ul, .hamburger {
+    z-index: 30;
   }
 }
 

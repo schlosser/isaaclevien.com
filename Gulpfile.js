@@ -253,8 +253,8 @@ gulp.task('build', gulp.series('clean', gulp.parallel('scss', 'images', 'js'), '
 gulp.task('build:optimized', gulp.series('clean', gulp.parallel('scss:optimized', 'images', 'js'), 'jekyll'));
 
 gulp.task('deploy:rsync', function(done) {
-  cp.exec('rsync -avuzh _site/* dan:/srv/isaac.schlosser.io/public_html/', function() {
-    process.stdout.write('Deployed to isaac.schlosser.io\n');
+  cp.exec('rsync -avuzh _site/* dan:/srv/isaaclevien.com/public_html/', function() {
+    process.stdout.write('Deployed to isaaclevien.com\n');
     done();
   })
   .stdout.on('data', function(data) {
