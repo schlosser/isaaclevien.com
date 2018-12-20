@@ -2,6 +2,11 @@ $content-width: 60rem;
 
 section {
   padding: 8rem 1.5rem;
+
+  &.footer {
+    padding: 4rem 1.5rem;
+    background: $light-gray;
+  }
 }
 
 .section-area {
@@ -79,6 +84,7 @@ header {
     max-width: 35rem;
     min-height: 100%;
     padding: 15rem 3rem 0 1.5rem;
+    z-index: 20;
 
     p {
       margin-bottom: 1.1rem;
@@ -115,6 +121,25 @@ header {
 
 .soundcloud-wrapper {
   height: 166px;
+}
+
+.bandcamp-wrapper {
+  height: 0;
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+  background-color: $black;
+}
+
+.bandcamp-wrapper > iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  max-width: 700px;
+  max-height: 700px;
+  transform: translate(-50%, -50%);
 }
 
 // scss-lint:disable ImportantRule

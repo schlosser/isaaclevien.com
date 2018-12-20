@@ -12,9 +12,15 @@ body {
     z-index: 500;
   }
 
-  &.viewer-open .scrim {
-    opacity: 1;
-    pointer-events: auto;
+  &.viewer-open  {
+    .scrim {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .progressive-image.has-viewer {
+      cursor: zoom-out;
+    }
   }
 }
 
@@ -29,7 +35,7 @@ body {
     width: 100%;
   }
 
-  &.with-viewer {
+  &.has-viewer {
     cursor: zoom-in;
   }
 

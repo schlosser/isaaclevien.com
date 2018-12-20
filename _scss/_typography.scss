@@ -1,7 +1,7 @@
 // Font weights
 $semi-bold: 600;
 $regular: 400;
-$extra-light: 200;
+$light: 300;
 
 $sans: 'Work Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
@@ -24,6 +24,14 @@ h3, %h3 {
   font-weight: $semi-bold;
   line-height: 1.1;
   margin-bottom: 1rem;
+
+  &.light {
+    font-weight: $light;
+
+    a {
+      border-bottom: none;
+    }
+  }
 }
 
 h4, %h4, li {
@@ -36,7 +44,7 @@ h4, %h4, li {
 
 h5, %h5 {
   font-size: 0.9rem;
-  font-weight: $extra-light;
+  font-weight: $light;
   opacity: 0.8;
 }
 

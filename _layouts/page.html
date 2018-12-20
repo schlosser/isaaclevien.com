@@ -28,4 +28,7 @@ layout: default
 </header>
 <div class="main">
     {{ content }}
+    {% if page.footer %}
+        {% include footer.html %}
+    {% endif %}
 </div>
