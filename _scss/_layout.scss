@@ -197,6 +197,13 @@ header {
       max-height: 25rem;
       position: relative;
 
+      &.m-bottom {
+        figure img {
+          top: auto;
+          bottom: 0;
+        }
+      }
+
       &.stapled-bottom {
         bottom: auto;
         position: relative;
@@ -207,8 +214,8 @@ header {
         width: 100%;
 
         img {
-          bottom: 0;
-          top: auto;
+          bottom: auto;
+          top: 0;
         }
       }
     }
