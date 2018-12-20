@@ -178,8 +178,14 @@ header {
 }
 
 @media screen and (max-width: $tablet-landscape-max) {
-  header .lede-image-wrapper figure {
-    width: 75%;
+  header {
+    .lede-image-wrapper figure {
+      width: 75%;
+    }
+
+    .lede {
+      padding-bottom: 1.5rem;
+    }
   }
 }
 
