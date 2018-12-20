@@ -1,12 +1,12 @@
 meta:
   title: "Isaac Levien"
   description: "Composer, Bassist, Multidisciplinary Artist, Educator"
-  facebook_image: ""  # /img/facebook.png
-  twitter_image: ""  # /img/twitter.png
-  image: ""  # /img/share.png
-  twitter_handle: ""  # @minimill_co
+  facebook_image: "/img/res/1600/isaac-wall.jpg"
+  twitter_image: "/img/res/1600/isaac-wall.jpg"
+  image: "/img/res/1600/isaac-wall.jpg"
+  twitter_handle: "@isaaclevien"
   domain: "isaaclevien.com"
-  url: "https://isaaclevien.com"
+  url: "http://isaaclevien.com"
   google_analytics_id: "UA-58345569-2"
   theme_color: "#FFFFFF"
 
